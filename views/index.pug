@@ -1,0 +1,22 @@
+extend layout
+
+block content
+  h1 Products
+
+  if products
+    table
+      thead
+        tr
+          th Title
+          th prize in US$
+          th
+      tbody
+        each product in products
+          tr
+            td= product.title
+            td= product.prize
+            td
+              form(action="/comparison" method="POST")
+                input(type="hidden" name="product" value=product.id)
+                input(type="submit" value="compare")
+

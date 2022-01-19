@@ -1,0 +1,15 @@
+extend layout
+
+block content
+  h1 Comparison
+
+  if products
+    comparison-products
+      each product in products
+        comparison-product
+          h3= product.title
+          p= product.prize
+          form(action=`/comparison/${product.id}` method="POST")
+            input(type="hidden" name="_method" value="DELETE")
+            input(type="submit" value="remove")
+
